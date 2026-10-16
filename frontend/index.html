@@ -1,0 +1,74 @@
+#<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Release Radar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Kubernetes release overview</p>
+        <h1>Release Radar</h1>
+        <p class="subtitle">Панель состояния окружений и релизов.</p>
+      </div>
+      <span class="status-badge" id="cluster-status">Проверка кластера…</span>
+    </header>
+
+    <main>
+      <section class="summary" aria-label="Сводка кластера">
+        <article class="summary-card">
+          <span>Окружений</span>
+          <strong id="environment-count">—</strong>
+        </article>
+        <article class="summary-card">
+          <span>Workloads</span>
+          <strong id="workload-count">—</strong>
+        </article>
+        <article class="summary-card">
+          <span>Готовых Pod-ов</span>
+          <strong id="ready-pods">—</strong>
+        </article>
+      </section>
+
+      <section class="section-heading">
+        <div>
+          <p class="eyebrow">Environments</p>
+          <h2>Состояние окружений</h2>
+        </div>
+        <div class="actions">
+          <button id="refresh-button" type="button">Обновить</button>
+          <button id="deploy-stage-button" type="button">Симулировать deploy stage</button>
+        </div>
+      </section>
+
+      <section class="environment-grid" id="environment-grid" aria-live="polite"></section>
+    </main>
+
+    <template id="environment-template">
+      <article class="environment-card">
+        <div class="card-topline">
+          <h3 class="environment-name"></h3>
+          <span class="environment-status"></span>
+        </div>
+        <dl>
+          <div>
+            <dt>Версия</dt>
+            <dd class="environment-version"></dd>
+          </div>
+          <div>
+            <dt>Pod-ы</dt>
+            <dd class="environment-pods"></dd>
+          </div>
+          <div>
+            <dt>Последний deploy</dt>
+            <dd class="environment-deployed-at"></dd>
+          </div>
+        </dl>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
